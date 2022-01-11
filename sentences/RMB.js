@@ -44,6 +44,11 @@ module.exports = function (app) {
       bearingTrue,
       vmgWpt
     ) {
+
+      app.debug(wp.wpPosition);
+
+
+
       return nmea.toSentence([
         '$IIRMB',
         'A',
