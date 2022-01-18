@@ -102,6 +102,15 @@ function buildSchemaFromSentences (plugin) {
 
 function loadSentences (app, plugin) {
   const fpath = path.join(__dirname, 'sentences')
+  var xxx=fs
+  .readdirSync(fpath)
+  .filter(filename => filename.endsWith('.js'))
+  .reduce((acc, fname) => {
+    let sentence = path.basename(fname, '.js')
+    acc[sentence] = require(path.join(fpath, sentence))(app, plugin)
+    return acc
+  }, {})
+  
   return fs
     .readdirSync(fpath)
     .filter(filename => filename.endsWith('.js'))
