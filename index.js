@@ -110,7 +110,10 @@ function loadSentences (app, plugin) {
     acc[sentence] = require(path.join(fpath, sentence))(app, plugin)
     return acc
   }, {})
-  
+
+  app.debug('========= ACA VA ==========')
+  app.debug('===========================')
+
   return fs
     .readdirSync(fpath)
     .filter(filename => filename.endsWith('.js'))
