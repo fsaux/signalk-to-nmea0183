@@ -13,12 +13,11 @@ module.exports = function (app) {
     title: 'PTAK - Performance - Polar Speed Ratio',
     keys: ['performance.polarSpeedRatio'],
     f: function (performance) {
-      var perf = performance *100;
-
+      var perf = performance ===null? undefined: (performance *100).toFixed(0);
       return nmea.toSentence([
         '$PTAK',
         'FFD1',
-        performance.toFixed(0)
+        perf
       ])
     }
   }
