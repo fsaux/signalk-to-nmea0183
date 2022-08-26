@@ -17,7 +17,7 @@ module.exports = function (app) {
         '$PTAK',
         'FFP3',
         'TgtTWA',
-        ''
+        '###@'
       ])
     }
   }

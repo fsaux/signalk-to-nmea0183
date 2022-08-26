@@ -13,7 +13,7 @@ module.exports = function (app) {
     title: 'PTAK - Racing - Time to Layline',
     keys: ['navigation.racing.layline.time'],
     f: function (ttll) {
-      const timetolyl = ttll === null ? undefined : new Date(ttll * 1000).toISOString().substring(11, 16)
+      const timetolyl = ttll === null ? undefined : (ttll / 60).toFixed(0)
       return nmea.toSentence([
         '$PTAK',
         'FFD4',

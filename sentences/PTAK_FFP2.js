@@ -17,7 +17,7 @@ module.exports = function (app) {
         '$PTAK',
         'FFP2',
         'TgtSPD',
-        'KNOTS'
+        ' KNOTS'
       ])
     }
   }
