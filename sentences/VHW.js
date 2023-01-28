@@ -28,9 +28,9 @@ module.exports = function (app) {
       }
       return nmea.toSentence([
         '$IIVHW',
-        nmea.radsToDeg(headingTrue).toFixed(1),
+        headingTrue === null ? undefined : nmea.radsToDeg(headingTrue).toFixed(1),
         'T',
-        nmea.radsToDeg(headingMagnetic).toFixed(1),
+        headingMagnetic === null ? undefined : nmea.radsToDeg(headingMagnetic).toFixed(1),
         'M',
         nmea.msToKnots(speedThroughWater).toFixed(2),
         'N',
