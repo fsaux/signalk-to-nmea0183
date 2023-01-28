@@ -6,7 +6,7 @@ Heading and distance to waypoint:
  $--RMB,A,x.x,a,c--c,c--c,llll.ll,a,yyyyy.yy,a,x.x,x.x,x.x,A,m,*hh<CR><LF>
 ------------------------------------------------------------------------------
 
-Field Number: 
+Field Number:
 
 1. Status, A= Active, V = Void
 2. Cross Track error - nautical miles
@@ -56,7 +56,7 @@ module.exports = function (app) {
         Math.abs(nmea.mToNm(wpDistance)).toFixed(2),
         nmea.radsToPositiveDeg(bearingTrue).toFixed(0),
         nmea.msToKnots(vmgWpt).toFixed(2),
-        '', 
+        '',
         'A'
       ])
     }
