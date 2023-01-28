@@ -19,12 +19,14 @@ module.exports = function (app) {
       'navigation.speedThroughWater'
     ],
     f: function vhw (headingTrue, magneticVariation, speedThroughWater) {
-      var headingMagnetic = headingTrue + magneticVariation
-      if (headingMagnetic > Math.PI * 2) {
-        headingMagnetic -= Math.PI * 2
-      }
-      if (headingMagnetic < 0) {
-        headingMagnetic += Math.PI * 2
+      if (headingTrue !== null && magneticVariation !== null) {
+        var headingMagnetic = headingTrue + magneticVariation
+        if (headingMagnetic > Math.PI * 2) {
+          headingMagnetic -= Math.PI * 2
+        }
+        if (headingMagnetic < 0) {
+          headingMagnetic += Math.PI * 2
+        }
       }
       return nmea.toSentence([
         '$IIVHW',
