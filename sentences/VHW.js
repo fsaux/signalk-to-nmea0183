@@ -14,26 +14,14 @@ module.exports = function (app) {
     sentence: 'VHW',
     title: 'VHW - Speed and direction',
     keys: [
-      'navigation.headingTrue',
-      'navigation.magneticVariation',
       'navigation.speedThroughWater'
     ],
-    f: function vhw (headingTrue, magneticVariation, speedThroughWater) {
-      var headingMagnetic
-      if (headingTrue && magneticVariation) {
-        headingMagnetic = headingTrue + magneticVariation
-        if (headingMagnetic > Math.PI * 2) {
-          headingMagnetic -= Math.PI * 2
-        }
-        if (headingMagnetic < 0) {
-          headingMagnetic += Math.PI * 2
-        }
-      }
+    f: function vhw (speedThroughWater) {
       return nmea.toSentence([
         '$IIVHW',
-        headingTrue === null ? undefined : nmea.radsToDeg(headingTrue).toFixed(1),
+        '',
         'T',
-        headingMagnetic === null ? undefined : nmea.radsToDeg(headingMagnetic).toFixed(1),
+        '',
         'M',
         nmea.msToKnots(speedThroughWater).toFixed(2),
         'N',
