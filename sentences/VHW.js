@@ -17,11 +17,17 @@ module.exports = function (app) {
       'navigation.speedThroughWater'
     ],
     f: function vhw (speedThroughWater) {
+
+      let headingTrue = app.getSelfPath('navigation.headingTrue')
+      let headingMagnetic = app.getSelfPath('navigation.headingMagnetic')
+
+      app.debug(headingTrue)
+
       return nmea.toSentence([
         '$IIVHW',
-        '',
+        headingTrue ? nmea.radsToDeg(headingTrue.value).toFixed(1) : '',
         'T',
-        '',
+        headingMagnetic ? nmea.radsToDeg(headingMagnetic.value).toFixed(1) : '',
         'M',
         nmea.msToKnots(speedThroughWater).toFixed(2),
         'N',
